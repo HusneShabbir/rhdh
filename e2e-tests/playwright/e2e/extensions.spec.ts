@@ -259,8 +259,8 @@ test.describe("Admin > Extensions", () => {
         { exact: true },
       );
       await uiHelper.searchInputPlaceholder("Topology");
-      await page.getByRole("heading", { name: "Topology" }).first().click();
-      await uiHelper.clickButton("Actions");
+      await extensions.clickReadMoreByPluginTitle("Topology");
+      await uiHelper.clickButton("View");
       await uiHelper.verifyHeading("Application Topology for Kubernetes");
       await uiHelper.verifyText(
         "- package: ./dynamic-plugins/dist/backstage-community-plugin-topology",
