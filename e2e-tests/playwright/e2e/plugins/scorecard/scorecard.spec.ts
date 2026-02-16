@@ -17,7 +17,7 @@
 import { test } from "@playwright/test";
 import { Common } from "../../../utils/common";
 import { Catalog } from "../../../support/pages/catalog";
-// Temporarily commented - will re-enable after scorecard delay fix
+// TODO: Re-enable/uncomment once https://issues.redhat.com/browse/RHIDP-12130 is fixed
 // import { CatalogImport } from "../../../support/pages/catalog-import";
 import { ScorecardPage } from "../../../support/page-objects/scorecard/scorecard-page";
 import type { BrowserContext, Page } from "@playwright/test";
@@ -26,7 +26,7 @@ test.describe.serial("Scorecard Plugin Tests", () => {
   let context: BrowserContext;
   let page: Page;
   let catalog: Catalog;
-  // Temporarily commented - will re-enable after scorecard delay fix
+  // TODO: Re-enable/uncomment once https://issues.redhat.com/browse/RHIDP-12130 is fixed
   // let catalogImport: CatalogImport;
   let scorecardPage: ScorecardPage;
 
@@ -42,7 +42,7 @@ test.describe.serial("Scorecard Plugin Tests", () => {
     context = await browser.newContext();
     page = await context.newPage();
     catalog = new Catalog(page);
-    // Temporarily commented - will re-enable after scorecard delay fix
+    // TODO: Re-enable/uncomment once https://issues.redhat.com/browse/RHIDP-12130 is fixed
     // catalogImport = new CatalogImport(page);
     scorecardPage = new ScorecardPage(page);
     await new Common(page).loginAsKeycloakUser();
@@ -76,7 +76,7 @@ test.describe.serial("Scorecard Plugin Tests", () => {
   });
 
   test.describe("Entity Scorecards", () => {
-    // Temporarily skipped - will re-enable after scorecard delay fix
+    // TODO: Re-enable/uncomment once https://issues.redhat.com/browse/RHIDP-12130 is fixed
     // test.beforeAll(async () => {
     //   const addonTestUrl =
     //     "https://github.com/janus-qe/RHDH-scorecard-plugin-test/blob/main/addon-test.yaml";
@@ -155,7 +155,8 @@ test.describe.serial("Scorecard Plugin Tests", () => {
       await scorecardPage.expectErrorHeading("Invalid thresholds");
       await scorecardPage.validateScorecardAriaFor(jiraMetric);
     });
-    //Temporarily skipped due to scorecard visibility delay; will re-enable after fix.
+
+    // TODO: Re-enable/uncomment once https://issues.redhat.com/browse/RHIDP-12130 is fixed
     test.skip("Validate scorecards on imported addon-test entity", async () => {
       await catalog.go();
       await catalog.goToByName("addon-test");
@@ -168,7 +169,7 @@ test.describe.serial("Scorecard Plugin Tests", () => {
     });
   });
 
-  //Temporarily skipped due to scorecard visibility delay; will re-enable after fix.
+  // TODO: Re-enable/uncomment once https://issues.redhat.com/browse/RHIDP-12130 is fixed
   test.skip("Verify aggregated scorecard counts increased after import", async () => {
     await scorecardPage.navigateToHome();
 
